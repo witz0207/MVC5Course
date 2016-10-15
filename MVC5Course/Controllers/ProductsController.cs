@@ -17,7 +17,7 @@ namespace MVC5Course.Controllers
         // GET: Products
         public ActionResult Index()
         {
-            return View(db.Product.OrderByDescending(p => p.ProductId).Take(20).ToList());
+            return View(db.Product.OrderByDescending(p => p.ProductId).Take(10).ToList());
         }
 
         // GET: Products/Details/5
@@ -114,7 +114,7 @@ namespace MVC5Course.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-        
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

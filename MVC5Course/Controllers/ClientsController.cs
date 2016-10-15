@@ -17,14 +17,16 @@ namespace MVC5Course.Controllers
         // GET: Clients
         public ActionResult Index(string search)
         {
-            var client = db.Client.Include(c => c.Occupation).OrderByDescending(p => p.ClientId).Take(20);
+            var client = db.Client.Include(c => c.Occupation);
 
             if (!string.IsNullOrEmpty(search))
             {
                 client = client.Where(p => p.FirstName.Contains(search));
             }
 
-            return View(client.ToList());
+            client = client.OrderByDescending(p => p.ClientId).Take(10);
+
+            return View(client);
         }
 
         // GET: Clients/Details/5
@@ -43,13 +45,16 @@ namespace MVC5Course.Controllers
         }
 
         // GET: Clients/Create
+        [ChildActionOnly]
         public ActionResult Create()
         {
-            var client = new Client
-            {
-                DateOfBirth = DateTime.Today
-            };
             ViewBag.OccupationId = new SelectList(db.Occupation, "OccupationId", "OccupationName");
+
+            var client = new Client()
+            {
+                Gender = "M"
+            };
+
             return View(client);
         }
 
