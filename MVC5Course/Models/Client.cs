@@ -7,6 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations;
+using System.Web.Http.Results;
+using System.Web.UI.WebControls;
+using Newtonsoft.Json.Serialization;
+
 namespace MVC5Course.Models
 {
     using System;
@@ -21,8 +26,12 @@ namespace MVC5Course.Models
         }
     
         public int ClientId { get; set; }
+        [Required]
+        [StringLength(10, ErrorMessage = "{0} 最大不超過 {1}") ]
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
+        [Required]
+        [StringLength(20)]
         public string LastName { get; set; }
         public string Gender { get; set; }
         public Nullable<System.DateTime> DateOfBirth { get; set; }
