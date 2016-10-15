@@ -40,6 +40,7 @@ namespace MVC5Course.Models
         [DisplayName("性別")]
         public string Gender { get; set; }
         [DisplayName("生日")]
+        [DataType("date")]
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> DateOfBirth { get; set; }
         [DisplayName("信用評等")]

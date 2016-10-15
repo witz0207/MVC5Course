@@ -15,9 +15,15 @@ namespace MVC5Course.Controllers
         private FabricsEntities db = new FabricsEntities();
 
         // GET: Clients
-        public ActionResult Index()
+        public ActionResult Index(string search)
         {
             var client = db.Client.Include(c => c.Occupation).OrderByDescending(p => p.ClientId).Take(20);
+
+            if (!string.IsNullOrEmpty(search))
+            {
+                client = client.Where(p => p.FirstName.Contains(search));
+            }
+
             return View(client.ToList());
         }
 
@@ -39,8 +45,12 @@ namespace MVC5Course.Controllers
         // GET: Clients/Create
         public ActionResult Create()
         {
+            var client = new Client
+            {
+                DateOfBirth = DateTime.Today
+            };
             ViewBag.OccupationId = new SelectList(db.Occupation, "OccupationId", "OccupationName");
-            return View();
+            return View(client);
         }
 
         // POST: Clients/Create

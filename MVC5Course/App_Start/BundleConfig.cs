@@ -26,6 +26,15 @@ namespace MVC5Course
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            //DataTables
+            bundles.Add(new ScriptBundle("~/bundles/DataTable").Include(
+                        "~/Scripts/DataTables/jquery.dataTables.min.js"
+                        ));
+            bundles.Add(new StyleBundle("~/Content/DataTable").Include(
+                        "~/Content/DataTables/css/jquery.dataTables.css"
+                        //"~/Content/DataTables/css/*.css"
+                        ));
         }
     }
 }
