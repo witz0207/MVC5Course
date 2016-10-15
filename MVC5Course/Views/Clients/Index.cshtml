@@ -63,27 +63,28 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MiddleName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Gender)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateOfBirth)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreditRating)
-        </td>
-        @*
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MiddleName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreditRating)
+            </td>
+            @*
         <td>
             @Html.DisplayFor(modelItem => item.XCode)
         </td>
@@ -114,12 +115,20 @@
         <td>
             @Html.DisplayFor(modelItem => item.Occupation.OccupationName)
         </td>*@
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ClientId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ClientId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ClientId })
-        </td>
-    </tr>
-}
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {id = item.ClientId}) |
+                @Html.ActionLink("Details", "Details", new {id = item.ClientId}) |
+                @Html.ActionLink("Delete", "Delete", new {id = item.ClientId})
+            </td>
+        </tr>
+    }
 
 </table>
+
+<script>
+    $(document).ready(function() {
+    $('#table').DataTable( {
+        "order": [[ 4, "desc" ]]
+    } );
+} );
+</script>
