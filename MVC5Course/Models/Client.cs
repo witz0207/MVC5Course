@@ -7,6 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Http.Results;
 using System.Web.UI.WebControls;
@@ -28,11 +29,15 @@ namespace MVC5Course.Models
         public int ClientId { get; set; }
         [Required]
         [StringLength(10, ErrorMessage = "{0} 最大不超過 {1}") ]
+        [DisplayName("名")]
         public string FirstName { get; set; }
+        [DisplayName("中間名")]
         public string MiddleName { get; set; }
         [Required]
         [StringLength(20)]
+        [DisplayName("姓")]
         public string LastName { get; set; }
+        [DisplayName("性別")]
         public string Gender { get; set; }
         public Nullable<System.DateTime> DateOfBirth { get; set; }
         public Nullable<double> CreditRating { get; set; }
