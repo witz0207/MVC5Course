@@ -37,7 +37,13 @@ namespace MVC5Course.Controllers
         public ActionResult Delete(int id)
         {
             var product = db.Product.Find(id);
+
+            // delete foreign key for batch remove
+            db.OrderLine.RemoveRange(product.OrderLine);
+
+            // delete data
             db.Product.Remove(product);
+
             db.SaveChanges();
 
             return RedirectToAction("Index");
@@ -49,6 +55,33 @@ namespace MVC5Course.Controllers
             return View(product);
         }
 
+        public ActionResult Update(int id)
+        {
+            var product = db.Product.Find(id);
+            product.ProductName += "!";
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Add20Percent()
+        {
+            var data = db.Product.Where(p => p.ProductName.Contains("White")).OrderByDescending(p => p.ProductId);
+
+            foreach (var item in data)
+            {
+                if (item.Price.HasValue)
+                {
+                    item.Price = item.Price.Value * 1.2m ;
+                }
+            }
+
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+        #region -- Edit --
         // GET: Products/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -77,5 +110,8 @@ namespace MVC5Course.Controllers
             }
             return View(product);
         }
+
+        #endregion -- Edit --
+
     }
 }

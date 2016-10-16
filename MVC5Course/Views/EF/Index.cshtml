@@ -7,7 +7,8 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create") |
+    @Html.ActionLink("Add20Percent", "Add20Percent")
 </p>
 <table class="table">
     <tr>
@@ -29,7 +30,8 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.ProductName)
+            @Html.DisplayFor(modelItem => item.ProductName) |
+            @Html.ActionLink("add ! ", "Update", new {id = item.ProductId})
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Price)
