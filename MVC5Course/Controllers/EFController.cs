@@ -125,6 +125,17 @@ namespace MVC5Course.Controllers
             return View(data);
         }
 
+        /// <summary>
+        /// use ?keyword=Mary
+        /// </summary>
+        /// <param name="keyword"></param>
+        /// <returns></returns>
+        public ActionResult ClientContribution3(string keyword)
+        {
+            var data = db.usp_GetClientContribution(keyword);
+            return View(data);
+        }
+
         #region -- Edit --
 
         // GET: Products/Edit/5
