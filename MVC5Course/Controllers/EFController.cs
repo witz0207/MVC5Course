@@ -1,11 +1,10 @@
-﻿using System;
+﻿using MVC5Course.Models;
+using MVC5Course.Models.ViewModels;
 using System.Data.Entity;
 using System.Data.Entity.Validation;
-using MVC5Course.Models;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
-using Microsoft.Ajax.Utilities;
 
 namespace MVC5Course.Controllers
 {
@@ -82,17 +81,22 @@ namespace MVC5Course.Controllers
 
         public ActionResult Add20Percent()
         {
-            var data = db.Product.Where(p => p.ProductName.Contains("White")).OrderByDescending(p => p.ProductId);
+            // use sp method
+            string str = "%White%";
+            db.Database.ExecuteSqlCommand("UPDATE dbo.Product SET Price=Price*1.2 WHERE ProductName LIKE @p0", str);
 
-            foreach (var item in data)
-            {
-                if (item.Price.HasValue)
-                {
-                    item.Price = item.Price.Value * 1.2m ;
-                }
-            }
+            // use lambda
+            //var data = db.Product.Where(p => p.ProductName.Contains("White")).OrderByDescending(p => p.ProductId);
 
-            db.SaveChanges();
+            //foreach (var item in data)
+            //{
+            //    if (item.Price.HasValue)
+            //    {
+            //        item.Price = item.Price.Value * 1.2m ;
+            //    }
+            //}
+
+            //db.SaveChanges();
 
             return RedirectToAction("Index");
         }
@@ -103,7 +107,26 @@ namespace MVC5Course.Controllers
             return View(data);
         }
 
+        public ActionResult ClientContribution2(string keyword = "Mary")
+        {
+            var data = db.Database.SqlQuery<ClientContributionViewModel>(@"
+ 	        SELECT
+                 c.ClientId,
+ 		         c.FirstName,
+ 		         c.LastName,
+ 		         (SELECT SUM(o.OrderTotal)
+ 		          FROM [dbo].[Order] o
+ 		          WHERE o.ClientId = c.ClientId) as OrderTotal
+ 	        FROM
+ 		        [dbo].[Client] as c
+             WHERE
+                 c.FirstName LIKE @p0", "%" + keyword + "%");
+
+            return View(data);
+        }
+
         #region -- Edit --
+
         // GET: Products/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -134,6 +157,5 @@ namespace MVC5Course.Controllers
         }
 
         #endregion -- Edit --
-
     }
 }
