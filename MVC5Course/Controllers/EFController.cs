@@ -97,6 +97,12 @@ namespace MVC5Course.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult ClientContribution()
+        {
+            var data = db.vw_ClientContribution.Take(10);
+            return View(data);
+        }
+
         #region -- Edit --
         // GET: Products/Edit/5
         public ActionResult Edit(int? id)
