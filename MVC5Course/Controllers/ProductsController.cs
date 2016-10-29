@@ -22,7 +22,7 @@ namespace MVC5Course.Controllers
             //return View(db.Product.OrderByDescending(p => p.ProductId).Take(10).ToList());
 
             // change to use repository
-            var data = repo.All().OrderByDescending(p => p.ProductId).Take(10).ToList();
+            var data = repo.All();
             return View(data);
         }
 
@@ -127,12 +127,14 @@ namespace MVC5Course.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             //Product product = db.Product.Find(id);
-            Product product = repo.Find(id);
-
             //db.Product.Remove(product);
-            product.IsDeleted = true;
-
             //db.SaveChanges();
+
+            Product product = repo.Find(id);
+            
+            //product.IsDeleted = true;
+
+            repo.Delete(product);
             repo.UnitOfWork.Commit();
 
             return RedirectToAction("Index");
