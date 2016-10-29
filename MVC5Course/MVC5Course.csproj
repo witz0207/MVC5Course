@@ -180,6 +180,7 @@
     <Compile Include="Controllers\EFController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MVController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -298,6 +299,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\view.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -394,10 +396,14 @@
     <Content Include="Views\EF\ClientContribution.cshtml" />
     <Content Include="Views\EF\ClientContribution2.cshtml" />
     <Content Include="Views\EF\ClientContribution3.cshtml" />
+    <Content Include="Views\AR\PartialViewTest.cshtml" />
+    <Content Include="Views\AR\Index.cshtml" />
+    <Content Include="Views\MV\Index.cshtml" />
+    <Content Include="Views\MV\MyForm.cshtml" />
+    <Content Include="Views\MV\MyFormResult.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\AR\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
