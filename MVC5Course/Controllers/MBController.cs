@@ -54,7 +54,7 @@ namespace MVC5Course.Controllers
             return View(data);
         }
 
-        public ActionResult BatchUpdate(ProductBatchUpdateViewModel[] items)
+        public ActionResult BatchUpdate(List<ProductBatchUpdateViewModel> items)
         {
             /*
              * 預設輸出的欄位名稱格式：item.ProductId
@@ -78,7 +78,8 @@ namespace MVC5Course.Controllers
                 return RedirectToAction("ProductList");
             }
 
-            return View();
+            return View(items);
         }
+
     }
 }
