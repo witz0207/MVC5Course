@@ -9,7 +9,8 @@ namespace MVC5Course.Controllers
 {
     public class MBController : BaseController
     {
-        // GET: MV
+        // GET: MB
+        [ShareData]
         public ActionResult Index()
         {
             ViewData["Temp1"] = "test : ViewData";
@@ -27,6 +28,7 @@ namespace MVC5Course.Controllers
             return View();
         }
 
+        [ShareData]
         public ActionResult MyForm()
         {
             return View();
@@ -79,6 +81,12 @@ namespace MVC5Course.Controllers
             }
 
             return View(items);
+        }
+
+        public ActionResult MyError()
+        {
+            throw new InvalidOperationException("ERROR");
+            return View();
         }
 
     }
