@@ -8,7 +8,7 @@
 
 <div>
     <h4>Client</h4>
-    <hr />
+    <hr/>
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.FirstName)
@@ -140,6 +140,17 @@
 
     </dl>
 </div>
+
+@* /Orders/Index?ClientId=1 *@
+
+<h3>Html.Action</h3>
+
+@Html.Action("Index", "Orders", new { ClientId = Model.ClientId })
+
+<h3>Html.Partial</h3>
+
+@Html.Partial("../Orders/Index", Model.Order.ToList())
+
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ClientId }) |
     @Html.ActionLink("Back to List", "Index")
