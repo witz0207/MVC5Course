@@ -587,6 +587,8 @@
     <Content Include="Views\Shared\_LayoutBootstrap.cshtml" />
     <Content Include="Views\Orders\Index.cshtml" />
     <Content Include="Views\Form\Index.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Client.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Client.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
