@@ -7,7 +7,6 @@ namespace MVC5Course.Models.ViewModels
 {
     public class ProductBatchUpdateViewModel
     {
-
         public int ProductId { get; set; }
         public string ProductName { get; set; }
         public Nullable<decimal> Price { get; set; }

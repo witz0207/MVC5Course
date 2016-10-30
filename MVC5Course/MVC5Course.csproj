@@ -167,6 +167,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActionFilters\LocalDebugOnlyAttribute.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -405,6 +406,7 @@
     <Content Include="Views\MB\MyFormResult.cshtml" />
     <Content Include="Views\MB\ProductList.cshtml" />
     <Content Include="Views\MB\BatchUpdate.cshtml" />
+    <Content Include="Views\Shared\Error_DbEntityValidationException.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

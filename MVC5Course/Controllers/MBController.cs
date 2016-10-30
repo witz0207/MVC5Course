@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -7,6 +8,8 @@ using MVC5Course.Models.ViewModels;
 
 namespace MVC5Course.Controllers
 {
+    //[LocalDebugOnly]
+    [HandleError(ExceptionType = typeof(DbEntityValidationException), View = "Error_DbEntityValidationException")]
     public class MBController : BaseController
     {
         // GET: MB
